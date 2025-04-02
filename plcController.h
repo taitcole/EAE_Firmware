@@ -10,14 +10,14 @@
 #include <stdbool.h>
 
 
-void checkSwitch(int iteration, bool advance);
+// void checkSwitch(int iteration, bool advance);
 
 bool safeOperations(int currentTemp, int fluidLevel);
 
-void stopPLC();
+// void stopPLC();
 
-void startPLC();
+// void startPLC();
 
-float generateRandomVoltage();
+// float generateRandomVoltage();
 
 #endif

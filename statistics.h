@@ -15,8 +15,6 @@ struct systemStats{
     int ignitionSwitch;
 };
 
-void formatHeader();
-
 int intLength(int integer);
 
 void printStatistics(struct systemStats *stats, int iteration);

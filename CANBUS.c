@@ -1,5 +1,17 @@
+/*
+ * Epiroc Combined Challenge - Question 7 Coding
+ * Author: Cole Tait
+ *
+ *****************
+ *** IMPORTANT ***
+ *****************
+ * This program can be ran through the "make run" command 
+ * inside of the MSYS2 MINGW64 Shell. 
+ * 
+ * Also increasing the size of the shell to fit the entire table
+ * is recommended for the best visual experience of the system.
+ */
 #include "canbus.h"
-
 
 CANMessage messagesBuffer[20];
 
@@ -7,7 +19,19 @@ int head;
 int tail;
 int messages;
 
-// Transmit CAN Message
+/** 
+ * @brief Initiation of CAN bus module
+ */
+void initCAN(){
+    head = 0;
+    tail = 0;
+    messages = 0;
+}
+
+/** 
+ * @brief Transmitter for CAN bus message 
+ * @param message is the message being transmitted by the CAN bus
+ */
 void CAN_TX(CANMessage *message){
 
     if(message->DLC > 8){
@@ -31,6 +55,10 @@ void CAN_TX(CANMessage *message){
 
 }
 
+/** 
+ * @brief Receiver for CAN bus message 
+ * @param message is the message being received by the CAN bus
+ */
 void CAN_RX(CANMessage *message){
 
     bool errorCheck = false;
@@ -48,17 +76,20 @@ void CAN_RX(CANMessage *message){
 
 }
 
+/** 
+ * @brief RCR calculation for transmitting message
+ * @param message is the message being transmitted by the CAN bus
+ */
 uint16_t calculateCRC(CANMessage *message){
     return 0;
 }
 
+/** 
+ * @brief RCR checking for receiving message
+ * @param message is the message being received by the CAN bus
+ */
 bool checkCRC(CANMessage *message){
     return true;
 }
 
-void initCAN(){
-    head = 0;
-    tail = 0;
-    messages = 0;
-}
 

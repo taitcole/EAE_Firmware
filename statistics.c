@@ -1,14 +1,36 @@
+/*
+ * Epiroc Combined Challenge - Question 7 Coding
+ * Author: Cole Tait
+ *
+ *****************
+ *** IMPORTANT ***
+ *****************
+ * This program can be ran through the "make run" command 
+ * inside of the MSYS2 MINGW64 Shell. 
+ * 
+ * Also increasing the size of the shell to fit the entire table
+ * is recommended for the best visual experience of the system.
+ */
 #include "statistics.h"
 
-char *status[] = {"Off", "On"};
+const char *status[] = {"Off", "On"};
 
+/** 
+ * @brief Helper function to find the length of a given integer.
+ * @param integer is the integer length to be desired
+ */
 int intLength(int integer){
     char temp[5];
     return sprintf(temp, "%d", integer);
 }
 
+/** 
+ * @brief Format for printing the statistics of the system for each functional iteration
+ * @param stats is a struct that contains all of the systems statistics for a given iteration
+ */
 void printStatistics(struct systemStats *stats, int iteration){
 
+    // For formatting whitespaces when digits are different lengths
     int fanSpeedLength = intLength(stats->fanSpeed);
     int temperatureLength = intLength(stats->temperature);
     int extraSpaceFanSpeed = 5 - fanSpeedLength;

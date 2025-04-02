@@ -1,3 +1,16 @@
+/*
+ * Epiroc Combined Challenge - Question 7 Coding
+ * Author: Cole Tait
+ *
+ *****************
+ *** IMPORTANT ***
+ *****************
+ * This program can be ran through the "make run" command 
+ * inside of the MSYS2 MINGW64 Shell. 
+ * 
+ * Also increasing the size of the shell to fit the entire table
+ * is recommended for the best visual experience of the system.
+ */
 #include "plcController.h"
 #include "tempSensor.h"
 #include "statistics.h"
@@ -14,6 +27,11 @@
 // int levelSwitch = 1;
 // bool advance = false;
 
+/** 
+ * @brief Checks level and temperature sensors for faulty conditions
+ * @param temperature is the current temperature in degrees celsius
+ * @param fluidLevel is the reservoir fluid level in litres
+ */
 bool safeOperations(int temperature, int fluidLevel){
 
     bool isSafe = true;
@@ -59,10 +77,10 @@ bool safeOperations(int temperature, int fluidLevel){
 
 // Generate some random DC Voltage between 0-5 V that would 
 // be seen as a PLC input from the temperature sensor
-float generateRandomVoltage(){
-    int randomVoltage = rand() % 5 ;
-    return randomVoltage;
-}
+// float generateRandomVoltage(){
+//     int randomVoltage = rand() % 5 ;
+//     return randomVoltage;
+// }
 
 
 

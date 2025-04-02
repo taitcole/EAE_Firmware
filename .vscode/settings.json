@@ -7,6 +7,7 @@
         "statistics.h": "c",
         "string.h": "c",
         "stdbool.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "system_error": "c"
     }
 }

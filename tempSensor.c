@@ -1,37 +1,51 @@
+/*
+ * Epiroc Combined Challenge - Question 7 Coding
+ * Author: Cole Tait
+ *
+ *****************
+ *** IMPORTANT ***
+ *****************
+ * This program can be ran through the "make run" command 
+ * inside of the MSYS2 MINGW64 Shell. 
+ * 
+ * Also increasing the size of the shell to fit the entire table
+ * is recommended for the best visual experience of the system.
+ */
 #include "tempSensor.h"
 
+/** 
+ * @brief Converts sensor voltages from temperature sensor data sheet 
+ *        into their respective temperatures.
+ * @param voltage is the sensor voltage 
+ */
 int convertVoltageToTemp(float voltage){
 
-    int temp;
-    
-    if(voltage >= 4.771){
-        temp = -20;
-    }else if(voltage >= 4.642){
-        temp = -10;
-    }else if(voltage >= 4.438){
-        temp = 0;
-    }else if(voltage >= 4.141){
-        temp = 10;
-    }else if(voltage >= 3.751){
-        temp = 20;
-    }else if(voltage >= 3.325){
-        temp = 30;
-    }else if(voltage >= 2.838){
-        temp = 40;
-    }else if(voltage >= 1.915){
-        temp = 60;
-    }else if(voltage >= 1.212){
-        temp = 80;
-    }else if(voltage >= 0.749){
-        temp = 100;
-    }else if(voltage >= 0.465){
-        temp = 120;
-    }else if(voltage >= 0.295){
-        temp = 140;
+    if(voltage >= V_TEMP_NEGATIVE_20){
+        return -20;
+    }else if(voltage >= V_TEMP_NEGATIVE_10){
+        return -10;
+    }else if(voltage >= V_TEMP_0){
+        return 0;
+    }else if(voltage >= V_TEMP_10){
+        return 10;
+    }else if(voltage >= V_TEMP_20){
+        return 20;
+    }else if(voltage >= V_TEMP_30){
+        return 30;
+    }else if(voltage >= V_TEMP_40){
+        return 40;
+    }else if(voltage >= V_TEMP_60){
+        return 60;
+    }else if(voltage >= V_TEMP_80){
+        return 80;
+    }else if(voltage >= V_TEMP_100){
+        return 100;
+    }else if(voltage >= V_TEMP_120){
+        return 120;
+    }else if(voltage >= V_TEMP_140){
+        return 140;
     }else{
-        temp = 160;
+        return 160;
     }
-
-    return temp;
 }
 
