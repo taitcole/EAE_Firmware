@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <math.h>
+#include <stdbool.h>
 
 typedef struct{
     uint32_t id;
@@ -12,11 +13,16 @@ typedef struct{
     uint8_t IDE;
     uint8_t DLC;
     uint8_t data[8];
-} CanMessage;
+    uint16_t CRC;
+} CANMessage;
 
-void CAN_RX();
+void CAN_RX(CANMessage *message);
 
-void CAN_TX(CanMessage *message);
+bool checkCRC(CANMessage *message);
+
+uint16_t calculateCRC(CANMessage *message);
+
+void CAN_TX(CANMessage *message);
 
 void initCAN();
 
