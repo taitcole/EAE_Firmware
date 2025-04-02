@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "fsm.h": "c"
+        "fsm.h": "c",
+        "canbus.h": "c",
+        "plccontroller.h": "c",
+        "tempsensor.h": "c",
+        "statistics.h": "c",
+        "string.h": "c",
+        "stdbool.h": "c"
     }
 }

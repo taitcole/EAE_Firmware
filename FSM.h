@@ -1,5 +1,6 @@
 #ifndef FSM_H
 #define FSM_H
+#include <stdbool.h>
 
 typedef enum{
     STATE_INIT,
@@ -9,6 +10,14 @@ typedef enum{
     STATE_COMPLETE
 } systemState;
 
-void stateMachine(int currentState);
+systemState getState();
+
+void initFSM();
+void checkSwitch(int iteration, bool advance);
+void stopPLC(int temperature);
+void startPLC();
+void systemRunning(int temperature);
+
+void stateMachine(int temperature, int iterations);
 
 #endif
