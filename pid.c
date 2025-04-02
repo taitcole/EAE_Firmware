@@ -11,11 +11,21 @@ void initPID(PIDController *pid){
 float computePID(PIDController *pid, float setPoint, float currentTemp){
     
     float computePID;
-    float error = setPoint - currentTemp;
+    float error = currentTemp - setPoint;
     pid->integral += error;
     float derivative = error - pid->prevError;
 
     computePID = (pid->kp*error) + (pid->ki*pid->integral) + (pid->kd*derivative);
+
+    if(computePID > 100){
+        computePID = 100;
+    }
+
+    if(computePID < 0){
+        computePID = 0;
+    }
+
+
     pid->prevError = error;
 
     return computePID;

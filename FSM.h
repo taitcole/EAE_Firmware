@@ -15,9 +15,11 @@ systemState getState();
 void initFSM();
 void checkSwitch(int iteration, bool advance);
 void stopPLC(int temperature);
-void startPLC();
-void systemRunning(int temperature);
+void startPLC(int temperature);
+void systemRunning(int *temperature, int setPoint);
 
-void stateMachine(int temperature, int iterations);
+void tempChange(int fanSpeed, int *temperature);
+
+void stateMachine(int *temperature, int iterations, int setPoint);
 
 #endif

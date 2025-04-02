@@ -34,11 +34,13 @@ int main(){
     srand(time(NULL));
 
     struct systemStats stats;
+    temperature = 70;
+
+    int setPoint = 80;
 
     while(getState() != STATE_COMPLETE){
         float voltage = generateRandomVoltage();
-        temperature = convertVoltageToTemp(voltage);
-        stateMachine(temperature, i);
+        stateMachine(&temperature, i, setPoint);
 
         if(getState() == STATE_RUNNING){
             i++;    
