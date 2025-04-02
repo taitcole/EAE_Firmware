@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -g -Wall -Wextra
 
-TARGET = plcController.exe
+TARGET = main.exe
 
-SRCS = plcController.c tempSensor.c statistics.c fan.c pump.c
+SRCS = main.c plcController.c tempSensor.c statistics.c fan.c pump.c canbus.c fsm.c pid.c 
 OBJS = $(SRCS:.c=.o) 
 
 $(TARGET): $(OBJS)

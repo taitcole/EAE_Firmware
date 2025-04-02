@@ -6,6 +6,7 @@
         "tempsensor.h": "c",
         "statistics.h": "c",
         "string.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "math.h": "c"
     }
 }

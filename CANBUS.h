@@ -6,6 +6,9 @@
 #include <stdint.h>
 #include <math.h>
 #include <stdbool.h>
+#define CHANGE_FAN_SPEED 0x100
+#define FAN_SPEED_DATA_SIZE 4
+
 
 typedef struct{
     uint32_t id;

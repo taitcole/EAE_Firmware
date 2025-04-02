@@ -1,10 +1,11 @@
-#include "CANBUS.h"
+#include "canbus.h"
 
-CANMessage messagesBuffer[5];
 
-int head = 0;
-int tail = 0;
-int messages = 0;
+CANMessage messagesBuffer[20];
+
+int head;
+int tail;
+int messages;
 
 // Transmit CAN Message
 void CAN_TX(CANMessage *message){
@@ -14,7 +15,7 @@ void CAN_TX(CANMessage *message){
         return;
     }
 
-    if(messages > 5){
+    if(messages > 20){
         printf("\nError. Too many messages on CAN bus at the moment.\n");
         return;
     }
@@ -24,7 +25,8 @@ void CAN_TX(CANMessage *message){
     message = &messagesBuffer[tail];
 
     // Circular queue
-    tail = (tail + 1) % 5;
+    tail = tail % 20;
+    tail++;
     messages++;
 
 }

@@ -1,5 +1,5 @@
-#include "FSM.h"
-#include "CANBUS.h"
+#include "fsm.h"
+#include "canbus.h"
 #include "plcController.h"
 #include "pid.h"
 #include "tempSensor.h"
@@ -55,7 +55,7 @@ systemState getState(){
 }
 
 void tempChange(int fanSpeed, int *temperature){
-    printf("FAN SPEED: %d", fanSpeed);
+    // printf("FAN SPEED: %d", fanSpeed);
     switch(fanSpeed){
         case MAX_FAN_SPEED:
             *temperature -= 5;
@@ -74,10 +74,19 @@ void tempChange(int fanSpeed, int *temperature){
 }
 
 void systemRunning(int *temperature, int setPoint){
+
     fluidLevel -= 10;
+    CANMessage message;
     float compPID = computePID(&pid, setPoint, *temperature);
-    printf("\n\nTEST PID: %f TEMP: %d SET: %d\n\n", compPID, *temperature, setPoint);
+    // printf("\n\nTEST PID: %f TEMP: %d SET: %d\n\n", compPID, *temperature, setPoint);
     fanSpeed = setFanSpeed(fanStatus, compPID);
+
+    message.id = CHANGE_FAN_SPEED;
+    message.RTR = 0;
+    message.IDE = 0;
+    message.DLC = FAN_SPEED_DATA_SIZE;
+    memcpy(message.data, &fanSpeed, sizeof(fanSpeed));
+    message.CRC = 0;
     
     pumpSpeed = setPumpSpeed(pumpStatus);
 }
